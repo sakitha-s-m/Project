@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,48 +19,109 @@
     </header>
     <main>
         <!-- login page content -->
-        <section class="login-form">
-            <form action="" method="get">
-                <div class="form-vaue">
-                    <label for="firstname">
-                        First Name:
-                    </label>
-                    <input type="text" id="firstname" name="firstname" required>
+        <div class="container">
+            <div class="forms-container">
+              <div class="signin-signup">
+          
+                <form action="#" class="sign-in-form">
+                  <h2 class="title">Sign In </h2>
+                  <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Username" />
+                  </div>
+                  <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password" />
+                  </div>
+                  <input type="submit" value="Login" class="btn solid" />
+                  <p class="social-text">Or Sign in with social platforms</p>
+          
+                  <!-- ------Social Icons For Sign In Page -------->
+                  <div class="social-media">
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-google"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-linkedin-in"></i>
+                    </a>
+                  </div>
+                </form>
+          
+                <!-------- Left Side Of Sign Up Page ---------->
+                <form action="#" class="sign-up-form">
+                  <h2 class="title">Sign Up</h2>
+                  <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Username" />
+                  </div>
+                  <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="Email" />
+                  </div>
+                  <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password" />
+                  </div>
+                  <input type="submit" class="btn" value="Sign up" />
+                  <p class="social-text">Or Sign up with social platforms</p>
+          
+                  <!---------  Social Media Icons For Sign Up  ------->
+                  <div class="social-media">
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-google"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                      <i class="fab fa-linkedin-in"></i>
+                    </a>
+          
+                  </div>
+                </form>
+              </div>
+            </div>
+          
+            <!---------- Left Side Of Sign In Page --------->
+            <div class="panels-container">
+              <div class="panel left-panel">
+                <div class="content">
+                  <h3>New To Our Website ?</h3>
+                  <p>
+                    Click the Sign Up button to see the effect...
+                  </p>
+                  <button class="btn transparent" id="sign-up-btn">
+                    Sign up
+                  </button>
                 </div>
-                <div class="form-vaue">
-                    <label for="lastname">
-                        Last Name:
-                    </label>
-                    <input type="text" id="lastname" name="lastname" required>
+                <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" class="image" alt="2nd Pic" />
+              </div>
+              <div class="panel right-panel">
+                <div class="content">
+                  <h3>One of us ?</h3>
+                  <p>
+                    Click the Sign In to see the effect
+                  </p>
+                  <button class="btn transparent" id="sign-in-btn">
+                    Sign in
+                  </button>
                 </div>
-                <div class="form-vaue">
-                    <label for="username">
-                        Username:
-                    </label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="form-vaue">
-                    <label for="mobile">
-                        Mobile Number:
-                    </label>
-                    <input type="tel" id="mobile" name="mobile" required>
-                </div>
-                <div class="form-vaue">
-                    <label for="email">
-                        Email:
-                    </label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-vaue">
-                    <label for="password">
-                        Password:
-                    </label>
-                    <input type="password" name="password" id="password">
-                </div>
-                <button>Sign Up</button>
-            </form>
-        </section>
+                <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" class="image" alt="1 Pic" />
+              </div>
+          
+            </div>
+          </div>
     </main>
     <footer></footer>
+    <script src="script.js"></script>
 </body>
 </html>
