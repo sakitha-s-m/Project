@@ -31,3 +31,27 @@ header ul li:hover {
     color: #fff;
     cursor: pointer;
 }
+
+/* Login Form */
+
+.login-form {
+    width: 500px;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aliceblue;
+    border-radius: 20px;
+    margin: 50px auto;
+    padding: 50px;
+}
+
+form .form-vaue {
+    display: block;
+    padding: 20px;
+}
+
+form .form-vaue input {
+    display: block;
+    width: 100%;
+}
