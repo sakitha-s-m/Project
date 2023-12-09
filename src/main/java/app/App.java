@@ -8,6 +8,7 @@ public class App {
     public static final int         JAVALIN_PORT    = 7001;
     public static final String      CSS_DIR         = "css/";
     public static final String      IMAGES_DIR      = "images/";
+    public static final String      SCRIPT_DIR      = "script/";
 
     public static void main(String[] args) {
         // Create our HTTP server and listen in port 7000
@@ -19,6 +20,8 @@ public class App {
 
             // Uncomment this if you have files in the Images Directory
             config.addStaticFiles(IMAGES_DIR);
+            
+            config.addStaticFiles(SCRIPT_DIR);
         }).start(JAVALIN_PORT);
 
 
