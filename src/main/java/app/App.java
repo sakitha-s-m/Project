@@ -19,7 +19,7 @@ public class App {
             config.addStaticFiles(CSS_DIR);
 
             // Uncomment this if you have files in the Images Directory
-            config.addStaticFiles(IMAGES_DIR);
+            //config.addStaticFiles(IMAGES_DIR);
             
             config.addStaticFiles(SCRIPT_DIR);
         }).start(JAVALIN_PORT);
