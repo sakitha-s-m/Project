@@ -1,11 +1,10 @@
 package app;
 
-import java.util.ArrayList;
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -88,33 +87,46 @@ public class PageIndex implements Handler {
                           <h2 class="title">Sign Up</h2>
                           <div class="input-field">
                             <i class="fas fa-user"></i>
-                            <input type="text" placeholder="First Name" />
+                            <input type="text" name="first_name" placeholder="First Name" />
                           </div>
                           <div class="input-field">
                             <i class="fas fa-user"></i>
-                            <input type="text" placeholder="Last Name" />
+                            <input type="text" name="last_name" placeholder="Last Name" />
                           </div>
                           <div class="input-field">
                             <i class="fas fa-user-check"></i>
-                            <input type="text" placeholder="Username" />
+                            <input type="text" name="user_name" placeholder="Username" />
                           </div>
                           <div class="input-field">
                             <i class="fas fa-envelope"></i>
-                            <input type="email" placeholder="Email" />
+                            <input type="email" name="email" placeholder="Email" />
                           </div>
                           <div class="input-field">
                             <i class="fas fa-phone"></i>
-                            <input type="tel" placeholder="Mobile" />
+                            <input type="tel" name="mobile" placeholder="Mobile" />
                           </div>
                           <div class="input-field">
                             <i class="fas fa-lock"></i>
-                            <input type="password" placeholder="Password" />
+                            <input type="password" name="password" placeholder="Password" />
                           </div>
-                          <input type="submit" class="btn" value="Sign up" />
+                          <input type="submit" class="btn" value="Sign up" name="signup />
                           <p class="social-text">Or Sign up with social platforms</p>
+                """;
+
+        if (context.formParam("signup") != null) {
+          String firstName = context.formParam("first_name");
+          String lastName = context.formParam("last_name");
+          String userName = context.formParam("user_name");
+          String email = context.formParam("email");
+          String mobile = context.formParam("mobile");
+          String password = context.formParam("password");
+
+          userData(firstName, lastName, userName, email, mobile, password);
+        }
                   
                           
-                          <div class="social-media">
+        html += """
+                         <div class="social-media">
                             <a href="#" class="social-icon">
                               <i class="fab fa-facebook-f"></i>
                             </a>
@@ -174,5 +186,52 @@ public class PageIndex implements Handler {
 
         context.html(html);
     }
+
+    public void userData(String firstName, String lastName, String userName, String email, String mobile, String password) {
+
+      Connection connection = null;
+
+      try {
+          // Connect to JDBC data base
+          connection = DriverManager.getConnection(JDBCConnection.DATABASE);
+
+          // Prepare a new SQL Query & Set a timeout
+          Statement statement = connection.createStatement();
+          statement.setQueryTimeout(30);
+
+          // The Query
+          String insertQuery = "INSERT INTO users (firstname, lastname, username, email, mobile, password) " +
+                     "VALUES (?, ?, ?, ?, ?, ?)";
+
+          PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+          preparedStatement.setString(1, firstName);
+          preparedStatement.setString(2, lastName);
+          preparedStatement.setString(3, userName);
+          preparedStatement.setString(4, email);
+          preparedStatement.setString(5, mobile);
+          preparedStatement.setString(6, password);
+
+          preparedStatement.executeUpdate();
+
+          // Close the statement because we are done with it
+          statement.close();
+
+      } catch (SQLException e) {
+
+          System.err.println(e.getMessage());
+
+      } finally {
+          // Safety code to cleanup
+          try {
+              if (connection != null) {
+                  connection.close();
+              }
+          } catch (SQLException e) {
+              // connection close failed.
+              System.err.println(e.getMessage());
+          }
+      }
+  }
+
 }
 
